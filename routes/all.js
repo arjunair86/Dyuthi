@@ -81,4 +81,19 @@ allRouter.route('/ongoing')
 		res.json(result);
 });
 
+allRouter.route('/:eventName')
+	.get(function(req, res){
+		var eventName = req.params.eventName;
+		var dyuthi = xlsx.utils.sheet_to_json(worksheet);
+		var result = {}, i;
+		for (i = 0; i<dyuthi.length; i++){
+			if(dyuthi[i].Event === eventName){
+				result['event_'+i] = dyuthi[i];
+				delete result['event_'+i].Event;
+			}
+		}
+		var result = {result};
+		res.json(result);
+});
+
 module.exports = allRouter;
