@@ -10,18 +10,14 @@ var sheet_name_list = workbook.SheetNames;
 var worksheet = workbook.Sheets[sheet_name_list[0]];
 var dyuthi = xlsx.utils.sheet_to_json(worksheet);
 
-allRouter.route('/')
-	.get(function(req, res){
-		var result = {dyuthi};
-		res.json(result);
-});
-
 allRouter.route('/day1')
 	.get(function(req, res){
 		var result = {}, i;
 		for (i = 0; i<dyuthi.length; i++){
-			if(dyuthi[i].Day === 'Day 1')
+			if(dyuthi[i].Day === 'Day 1'){
 				result['event_'+i] = dyuthi[i];
+				delete result['event_'+i].Day;
+			}
 		}
 		var result = {result};
 		res.json(result);
@@ -31,8 +27,10 @@ allRouter.route('/day2')
 	.get(function(req, res){
 		var result = {}, i;
 		for (i = 0; i<dyuthi.length; i++){
-			if(dyuthi[i].Day === 'Day 2')
+			if(dyuthi[i].Day === 'Day 2'){
 				result['event_'+i] = dyuthi[i];
+				delete result['event_'+i].Day;
+			}
 		}
 		var result = {result};
 		res.json(result);
@@ -42,8 +40,36 @@ allRouter.route('/day3')
 	.get(function(req, res){
 		var result = {}, i;
 		for (i = 0; i<dyuthi.length; i++){
-			if(dyuthi[i].Day === 'Day 3')
+			if(dyuthi[i].Day === 'Day 3'){
 				result['event_'+i] = dyuthi[i];
+				delete result['event_'+i].Day;
+			}
+		}
+		var result = {result};
+		res.json(result);
+});
+
+allRouter.route('/upcoming')
+	.get(function(req, res){
+		var result = {}, i;
+		for (i = 0; i<dyuthi.length; i++){
+			if(dyuthi[i].Status === 'Upcoming'){
+				result['event_'+i] = dyuthi[i];
+				delete result['event_'+i].Status;
+			}
+		}
+		var result = {result};
+		res.json(result);
+});
+
+allRouter.route('/ongoing')
+	.get(function(req, res){
+		var result = {}, i;
+		for (i = 0; i<dyuthi.length; i++){
+			if(dyuthi[i].Status === 'Ongoing'){
+				result['event_'+i] = dyuthi[i];
+				delete result['event_'+i].Status;
+			}
 		}
 		var result = {result};
 		res.json(result);
