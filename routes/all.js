@@ -4,7 +4,7 @@ const express = require('express');
 const allRouter = express.Router();
 
 const xlsx = require('xlsx');
-const workbook = xlsx.readFile('sample2.xlsx');
+const workbook = xlsx.readFile('dyuthi16_schedule.xlsx');
 
 const sheet_name_list = workbook.SheetNames;
 const worksheet = workbook.Sheets[sheet_name_list[0]];
