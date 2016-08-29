@@ -17,6 +17,6 @@ app.get('/9a7e3672c6b44fdc6caee12b84572240', function(req, res){
 	res.json(result);
 });
 
-app.listen(8000, function(){
-	console.log('Server listening to port 8000');
+app.listen(1050, function(){
+	console.log('Server listening to port 1050');
 });
