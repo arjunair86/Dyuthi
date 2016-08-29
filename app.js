@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyparser = require('body-parser');
 const router = express.Router();
+const port = process.env.PORT || 1050;
 const app = express();
 
 const xlsx = require('xlsx');
@@ -17,6 +18,6 @@ app.get('/9a7e3672c6b44fdc6caee12b84572240', function(req, res){
 	res.json(result);
 });
 
-app.listen(1050, function(){
-	console.log('Server listening to port 1050');
+app.listen(port, function(){
+	console.log('Server listening to port', port);
 });
