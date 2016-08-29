@@ -6,12 +6,14 @@ const allRouter = express.Router();
 const xlsx = require('xlsx');
 const workbook = xlsx.readFile('sample2.xlsx');
 
-var sheet_name_list = workbook.SheetNames;
-var worksheet = workbook.Sheets[sheet_name_list[0]];
-var dyuthi = xlsx.utils.sheet_to_json(worksheet);
+const sheet_name_list = workbook.SheetNames;
+const worksheet = workbook.Sheets[sheet_name_list[0]];
+const dyuthi = xlsx.utils.sheet_to_json(worksheet);
+
 
 allRouter.route('/day1')
 	.get(function(req, res){
+		var dyuthi = xlsx.utils.sheet_to_json(worksheet);
 		var result = {}, i;
 		for (i = 0; i<dyuthi.length; i++){
 			if(dyuthi[i].Day === 'Day 1'){
@@ -25,6 +27,7 @@ allRouter.route('/day1')
 
 allRouter.route('/day2')
 	.get(function(req, res){
+		var dyuthi = xlsx.utils.sheet_to_json(worksheet);
 		var result = {}, i;
 		for (i = 0; i<dyuthi.length; i++){
 			if(dyuthi[i].Day === 'Day 2'){
@@ -38,6 +41,7 @@ allRouter.route('/day2')
 
 allRouter.route('/day3')
 	.get(function(req, res){
+		var dyuthi = xlsx.utils.sheet_to_json(worksheet);
 		var result = {}, i;
 		for (i = 0; i<dyuthi.length; i++){
 			if(dyuthi[i].Day === 'Day 3'){
@@ -51,6 +55,7 @@ allRouter.route('/day3')
 
 allRouter.route('/upcoming')
 	.get(function(req, res){
+		var dyuthi = xlsx.utils.sheet_to_json(worksheet);
 		var result = {}, i;
 		for (i = 0; i<dyuthi.length; i++){
 			if(dyuthi[i].Status === 'Upcoming'){
@@ -64,6 +69,7 @@ allRouter.route('/upcoming')
 
 allRouter.route('/ongoing')
 	.get(function(req, res){
+		var dyuthi = xlsx.utils.sheet_to_json(worksheet);
 		var result = {}, i;
 		for (i = 0; i<dyuthi.length; i++){
 			if(dyuthi[i].Status === 'Ongoing'){
