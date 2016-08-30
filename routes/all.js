@@ -11,14 +11,21 @@ const worksheet = workbook.Sheets[sheet_name_list[0]];
 const dyuthi = xlsx.utils.sheet_to_json(worksheet);
 
 
+allRouter.route('/')
+	.get(function(req, res){
+		var result = {dyuthi};
+		res.json(result);
+	})
+
 allRouter.route('/day1')
 	.get(function(req, res){
 		var dyuthi = xlsx.utils.sheet_to_json(worksheet);
-		var result = {}, i;
+		var i, k=0, result = [];
 		for (i = 0; i<dyuthi.length; i++){
 			if(dyuthi[i].Day === 'Day 1'){
-				result['event_'+i] = dyuthi[i];
-				delete result['event_'+i].Day;
+				result.push(dyuthi[i]);
+				delete result[k].Day;
+				k++;
 			}
 		}
 		var result = {result};
@@ -28,11 +35,12 @@ allRouter.route('/day1')
 allRouter.route('/day2')
 	.get(function(req, res){
 		var dyuthi = xlsx.utils.sheet_to_json(worksheet);
-		var result = {}, i;
+		var i, k=0, result = [];
 		for (i = 0; i<dyuthi.length; i++){
 			if(dyuthi[i].Day === 'Day 2'){
-				result['event_'+i] = dyuthi[i];
-				delete result['event_'+i].Day;
+				result.push(dyuthi[i]);
+				delete result[k].Day;
+				k++;
 			}
 		}
 		var result = {result};
@@ -42,11 +50,12 @@ allRouter.route('/day2')
 allRouter.route('/day3')
 	.get(function(req, res){
 		var dyuthi = xlsx.utils.sheet_to_json(worksheet);
-		var result = {}, i;
+		var i, k=0, result = [];
 		for (i = 0; i<dyuthi.length; i++){
 			if(dyuthi[i].Day === 'Day 3'){
-				result['event_'+i] = dyuthi[i];
-				delete result['event_'+i].Day;
+				result.push(dyuthi[i]);
+				delete result[k].Day;
+				k++;
 			}
 		}
 		var result = {result};
@@ -56,11 +65,11 @@ allRouter.route('/day3')
 allRouter.route('/upcoming')
 	.get(function(req, res){
 		var dyuthi = xlsx.utils.sheet_to_json(worksheet);
-		var result = {}, i;
+		var result = [], i;
 		for (i = 0; i<dyuthi.length; i++){
 			if(dyuthi[i].Status === 'Upcoming'){
-				result['event_'+i] = dyuthi[i];
-				delete result['event_'+i].Status;
+				result.push(dyuthi[i]);
+				delete result[i].Status;
 			}
 		}
 		var result = {result};
@@ -70,11 +79,11 @@ allRouter.route('/upcoming')
 allRouter.route('/ongoing')
 	.get(function(req, res){
 		var dyuthi = xlsx.utils.sheet_to_json(worksheet);
-		var result = {}, i;
+		var result = [], i;
 		for (i = 0; i<dyuthi.length; i++){
 			if(dyuthi[i].Status === 'Ongoing'){
-				result['event_'+i] = dyuthi[i];
-				delete result['event_'+i].Status;
+				result.push(dyuthi[i]);
+				delete result[i].Status;
 			}
 		}
 		var result = {result};
@@ -85,11 +94,11 @@ allRouter.route('/:eventName')
 	.get(function(req, res){
 		var eventName = req.params.eventName;
 		var dyuthi = xlsx.utils.sheet_to_json(worksheet);
-		var result = {}, i;
+		var result = [], i;
 		for (i = 0; i<dyuthi.length; i++){
 			if(dyuthi[i].Event === eventName){
-				result['event_'+i] = dyuthi[i];
-				delete result['event_'+i].Event;
+				result.push(dyuthi[i]);
+				delete result[i].Event;
 			}
 		}
 		var result = {result};
