@@ -6,6 +6,8 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended :true }));
 app.use(bodyParser.json());
 
+app.use('/public', express.static('public'));
+
 app.use('/all', require('./routes/all'));
 
 app.listen(port, function(){
