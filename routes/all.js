@@ -19,7 +19,7 @@ allRouter.route('/day1')
 				result.push(dyuthi[i]);
 			}
 		}
-		var result = {result};
+		result = {result};
 		res.json(result);
 });
 
@@ -32,7 +32,7 @@ allRouter.route('/day2')
 				result.push(dyuthi[i]);
 			}
 		}
-		var result = {result};
+		result = {result};
 		res.json(result);
 });
 
@@ -45,7 +45,7 @@ allRouter.route('/day3')
 				result.push(dyuthi[i]);
 			}
 		}
-		var result = {result};
+		result = {result};
 		res.json(result);
 });
 
@@ -58,7 +58,7 @@ allRouter.route('/upcoming')
 				result.push(dyuthi[i]);
 			}
 		}
-		var result = {result};
+		result = {result};
 		res.json(result);
 });
 
@@ -71,7 +71,7 @@ allRouter.route('/ongoing')
 				result.push(dyuthi[i]);
 			}
 		}
-		var result = {result};
+		result = {result};
 		res.json(result);
 });
 
@@ -90,7 +90,7 @@ allRouter.route('/:eventName')
 			}
 		}
 
-		var result = {result};		
+		result = {result};		
 		res.json(result);
 });
 
