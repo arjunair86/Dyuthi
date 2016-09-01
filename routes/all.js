@@ -75,7 +75,7 @@ allRouter.route('/ongoing')
 		res.json(result);
 });
 
-allRouter.route('/:eventName')
+allRouter.route('/name/:eventName')
 	.get(function(req, res){
 		
 		var eventName = req.params.eventName;
@@ -87,6 +87,23 @@ allRouter.route('/:eventName')
 			if(dyuthi[i].Event === eventName){
 				result.push(dyuthi[i]);
 				eventType = dyuthi[i].Type;
+			}
+		}
+
+		result = {result};		
+		res.json(result);
+});
+
+allRouter.route('/type/:eventType')
+	.get(function(req, res){
+		
+		var eventType = req.params.eventType;
+		var dyuthi = res.locals.dyuthi;
+		var result = [], i;
+		
+		for (i = 0; i<dyuthi.length; i++){
+			if(dyuthi[i].Type === eventType){
+				result.push(dyuthi[i]);
 			}
 		}
 
