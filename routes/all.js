@@ -17,7 +17,7 @@ for(i=0; i<dyuthi.length; i++){
 	var eventType = dyuthi[i].Type;
 	var eventName = dyuthi[i].Event;
 	if(eventType !== "Expo"){
-		var files = fs.readdirSync('/home/lenser/dyuthi/public/imgs/'+eventType);
+		var files = fs.readdirSync(__dirname + '/../public/imgs/' + eventType);
 		var ename = eventName.replace(/ /g, '').toLowerCase();
 			for (var j=0; j<files.length; j++){
 				var cleanString = files[j].split('-')[0].split('.')[0].split(' ')[0].toLowerCase(); 
@@ -114,7 +114,7 @@ allRouter.route('/:eventName')
 			}
 		}
 
-		var files = fs.readdirSync('/home/lenser/dyuthi/public/imgs/'+eventType);
+		var files = fs.readdirSync(__dirname + '/../public/imgs/' + eventType);
 		var ename = eventName.replace(/ /g, '').toLowerCase();
 
 
