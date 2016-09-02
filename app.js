@@ -35,8 +35,10 @@ var addLinks = function(req, res, next){
 }
 app.use(addLinks);
 
+
 app.use('/all', require('./routes/all'));
 app.use('/name', require('./routes/name'));
 app.use('/type', require('./routes/type'));
+app.use('/1c39d97378aff3777072f6dc63bcce30', require('./routes/fileUpload'));
 
 app.listen(port);

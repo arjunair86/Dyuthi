@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "nodemon -e '.xlsx' app.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,7 +12,11 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "lodash": "^4.15.0",
+    "multer": "^1.2.0",
     "node-dir": "^0.1.16",
     "xlsx": "^0.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.2"
   }
 }
